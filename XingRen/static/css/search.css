@@ -1,0 +1,22 @@
+.auto_hidden {
+    width: 0px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    position: absolute;
+    display: none;
+}
+
+.auto_show {
+    width: 400px;
+    height: auto;
+    position: absolute;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    z-index: 9999; /* 保证页面在最前端*/
+    display: block;
+    overflow: auto;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>杏仁</title>
+    <link rel="stylesheet" href="//layui.hcwl520.com.cn/layui/css/layui.css?v=201811010202" media="all">
+    {% load static %}
+    <link href="{% static "css/search.css" %}" rel="stylesheet" type="text/css"/>
+</head>
+
+<body style="background-color: #F2F2F2;padding: 30px">
+<div class="layui-row layui-col-space12">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend><h1><a href="/">杏仁</a></h1></legend>
+    </fieldset>
+    <div class="layui-card" style="width: 600px;margin-left: 10px">
+        <div class="demoTable" style="margin: 25px">
+            <div class="layui-inline" style="width: 400px;margin-left: 5px">
+                <input class="layui-input" id="search" onchange="hideSuggest()"
+                       value="{{ key_word | default:"" }}" autocomplete="off">
+            </div>
+            <div class="auto_hidden" id="auto"></div>
+            <button style="margin-left: 10px" class="layui-btn" onclick="doSearch()">搜索</button>
+        </div>
+    </div>
+
+    {% block result %}
+    {% endblock result %}
+
+</div>
+<script type="text/javascript" src="{% static "js/search.js" %}"></script>
+</body>
+
+</html>

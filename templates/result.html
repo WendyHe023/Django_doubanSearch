@@ -1,0 +1,107 @@
+{% extends 'search_base.html' %}
+
+{% block result %}
+    {% if key_word %}
+        {% for hit in hit_list %}
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <h3>
+                            {% if hit.season_count %}
+                                [剧集]
+                            {% else %}
+                                [电影]
+                            {% endif %}
+                            &nbsp;{{ hit.title }} - {{ hit.year }}
+                        </h3>
+
+                    </div>
+                    <div class="layui-card-body" style="height: 280px">
+                        <div>
+                            <img style="float: left;margin:10px" width="170px;" src="{{ hit.small_image }}"
+                                 alt="海报"
+                                 referrerpolicy="never">
+                        </div>
+                        <div style="margin-left: 200px">
+                            <a href="{{ hit.douban_link }}" class="layui-btn"
+                               style="background-color: green;float: right;margin-left:15px;margin-right: 15px;margin-top: 10px;text-align: center"
+                               target="_blank">
+                                豆瓣 {{ hit.rating }} 分
+                            </a>
+
+                            导演：{{ hit.directors }}
+                            <br>
+                            主演：{{ hit.casts }}
+                            <br>
+                            <a href="https://bt.byr.cn/torrents.php?search={{ hit.imdb }}&search_area=4&search_mode=0"
+                               class="layui-btn"
+                               style="background-color: dodgerblue;float: right;margin-left:15px;margin-right: 15px;text-align: center"
+                               target="_blank">
+                                ByrBT直达
+                            </a>
+
+                            时长：{{ hit.runtime }}分钟
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;{{ hit.overview }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend><h2>热门搜索</h2></legend>
+        </fieldset>
+        {% for hit in top_item %}
+            <div class="layui-col-xs12 layui-col-md3">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <h3 style="text-align: center">
+                            {% if hit.season_count %}
+                                [剧集]
+                            {% else %}
+                                [电影]
+                            {% endif %}
+                            &nbsp;
+                            {{ hit.title }} - {{ hit.year }}
+                        </h3>
+
+                    </div>
+                    <div class="layui-card-body">
+                        <div style="text-align: center">
+                            <img style="width: 80%" src="{{ hit.small_image }}"
+                                 alt="海报"
+                                 referrerpolicy="never">
+
+                            <br>
+                            <br>
+
+                            <a href="{{ hit.douban_link }}" class="layui-btn"
+                               style="background-color: green;text-align: center" target="_blank">
+                                豆瓣 {{ hit.rating }} 分
+                            </a>
+                            <a href="https://bt.byr.cn/torrents.php?search={{ hit.imdb }}&search_area=4&search_mode=0"
+                               class="layui-btn"
+                               style="background-color: dodgerblue;text-align: center" target="_blank">
+                                ByrBT直达
+                            </a>
+                        </div>
+                        <div style="margin: 5px 15px 15px">
+                            <br>
+                            导演：{{ hit.directors }}
+                            <br>
+                            主演：{{ hit.casts }}
+                            <br>
+                            时长：{{ hit.runtime }}分钟
+                            <br>
+                            {{ hit.overview }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock result %}
