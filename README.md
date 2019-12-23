@@ -1,0 +1,2 @@
+# Django_doubanSearch
+使用Djanggo框架+ElasticSearch数据库搭建一个电影资源检索网站
